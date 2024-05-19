@@ -59,7 +59,7 @@ struct LoadingView: View {
     
     private func performLoadingAnimation() -> Void {
         // first incrementation of the progress bar
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             withAnimation(.bouncy(duration: 1.25)) {
                 loadingProgressValue = (screenWidth - 200) - 140
             }
