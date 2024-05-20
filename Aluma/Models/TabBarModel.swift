@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum TabBarModel: String, CaseIterable {
+    case brain = "tab_brain"
+    case quotes = "tab_quotes"
+    case settings = "tab_settings"
+}

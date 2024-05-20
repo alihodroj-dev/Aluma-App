@@ -28,7 +28,7 @@ struct LoadingView: View {
                 // MARK: logo image
                 Image("app_logo")
                     .resizable()
-                    .frame(width: screenWidth - 150, height: screenWidth - 150)
+                    .frame(width: screenWidth/2 , height: screenWidth/2)
                 // MARK: progress bar
                 self.loadingProgressSubView
             }
@@ -42,13 +42,14 @@ struct LoadingView: View {
         ZStack(alignment: .leading) {
             // progress bar
             Color.accentColor.opacity(0.25)
+                .frame(width: screenWidth/3)
+                .clipShape(.rect(cornerRadius: 22))
             // progress completed
             Color.accentColor
                 .frame(width: loadingProgressValue)
                 .clipShape(.rect(cornerRadius: 12))
         }
-        .frame(width: screenWidth - 200 ,height: 8)
-        .clipShape(.rect(cornerRadius: 12))
+        .frame(height: 8)
     }
     
     // MARK: helper methods
@@ -61,12 +62,12 @@ struct LoadingView: View {
         // first incrementation of the progress bar
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             withAnimation(.bouncy(duration: 1.25)) {
-                loadingProgressValue = (screenWidth - 200) - 140
+                loadingProgressValue = screenWidth/8
             }
             // second incrementation of the progress bar
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 withAnimation(.bouncy(duration: 1.75).delay(1.25)) {
-                    loadingProgressValue = (screenWidth - 200)
+                    loadingProgressValue = screenWidth/3
                 }
             }
         }
