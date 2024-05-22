@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     // MARK: view properties
-    @State private var tabBarSelection: TabBarModel = .brain
+    @State private var tabBarSelection: TabBarModel = .quotes
     
     var body: some View {
         // MARK: main container
@@ -20,7 +20,12 @@ struct MainView: View {
                 .ignoresSafeArea()
             // MARK: current view and tab bar
             VStack(spacing: 0) {
-                Spacer()
+                // MARK: current view
+                switch tabBarSelection {
+                case .brain: BreathingExerciseView().transition(.push(from: .top))
+                case .quotes: QuotesView().transition(.push(from: .top))
+                case .settings: SettingsView().transition(.push(from: .top))
+                }
                 // MARK: tab bar
                 tabBar
             }
